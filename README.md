@@ -1,11 +1,10 @@
-# changes
+# changes (yswntht)
 
 (1) no-syscalls
 (2) baremetal-riscv
 
 
-
-# Integer Only Inferencing
+# Integer Only Inferencing (everything below is from Jameszampa, repo)
 This folder contains all the code required for testing the same CNN used in the term paper. I did not include the python files for generating the .h files as I did not deem it necessary. This folder contains code used for my VIP Senior Design Project and was discussed in the implementation section of my term paper. I added some extra functionality to measure execution time and overall accuracy, but other than that it is the same piece of code that will be used for my machine learning benchmark for senior design.
 
 ## main.c
