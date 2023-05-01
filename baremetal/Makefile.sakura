@@ -1,0 +1,23 @@
+
+CROSS_COMPILE = /media/yash/d4835fca-09e7-46d4-924f-c52807c819be2/ubuntuos/Downloads_S/vivado-risc-v/workspace/gcc/riscv/bin/riscv64-unknown-elf-
+
+CC=$(CROSS_COMPILE)gcc
+OBJCOPY=$(CROSS_COMPILE)objcopy
+OBJDUMP=$(CROSS_COMPILE)objdump
+
+#CFLAGS = -march=rv64imfd -mabi=lp64d -fno-builtin -ffreestanding
+CFLAGS = -march=rv64im -mabi=lp64 -fno-builtin -ffreestanding
+
+CCFLAGS = $(CFLAGS)
+CCFLAGS += -mcmodel=medany -O3 -Wall
+CCFLAGS += -fno-pic -fno-common -g -I.
+
+LFLAGS = -static -nostartfiles -T main.lds
+
+all: boot.elf
+
+boot.elf: head.S kprintf.c main_default_100.c
+	$(CC) $(CCFLAGS) $(LFLAGS) -o $@ head.S kprintf.c main_default_100.c 
+
+clean:
+	rm -f *.elf
